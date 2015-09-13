@@ -580,10 +580,7 @@ class ColorbarBase(cm.ScalarMappable):
             else:
                 b = self._boundaries[self._inside]
                 locator = ticker.FixedLocator(b, nbins=10)
-        if isinstance(self.norm, colors.NoNorm):
-            intv = self._values[0], self._values[-1]
-        else:
-            intv = self.vmin, self.vmax
+        intv = self.vmin, self.vmax
         locator.create_dummy_axis(minpos=intv[0])
         formatter.create_dummy_axis(minpos=intv[0])
         locator.set_view_interval(*intv)
