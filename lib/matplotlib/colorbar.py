@@ -886,11 +886,11 @@ class Colorbar(ColorbarBase):
         if isinstance(mappable, contour.ContourSet):
             CS = mappable
             kw['alpha'] = mappable.get_alpha()
-            kw['boundaries'] = CS._levels
-            kw['values'] = CS.cvalues
+            if not CS.filled:
+                kw['boundaries'] = CS._levels
+                kw['values'] = CS.cvalues
+                kw.setdefault('ticks', ticker.FixedLocator(CS.levels, nbins=10))
             kw['extend'] = CS.extend
-            #kw['ticks'] = CS._levels
-            kw.setdefault('ticks', ticker.FixedLocator(CS.levels, nbins=10))
             kw['filled'] = CS.filled
             ColorbarBase.__init__(self, ax, **kw)
             if not CS.filled:
