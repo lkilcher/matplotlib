@@ -756,7 +756,7 @@ class Colormap(object):
 
         # ### float indexing
         # for float-style indexing, the values must be in [0.0, 1.0]
-        # Truncate the colormap between 20 and 80%.
+        # Truncate the colormap between 20 and 60%.
         new_cm = cmap[0.2:0.6]
         # `new_cm` will have the color-spacing as `cmap` (in this
         # case: 0.6 - 0.2 = 40% of 128 = 51 colors)
@@ -790,7 +790,7 @@ class Colormap(object):
         # all values must be ints in [-self.N, self.N]:
         new_cm = cmap[[5, 10, 25, -38]]
 
-        # Or by floats in the range [-1, 1]
+        # Or by floats in the range [-1.0, 1.0]
         new_cm = cmap[[0.04, 0.08, 0.2, -0.3]]
         """
         if isinstance(item, slice):
